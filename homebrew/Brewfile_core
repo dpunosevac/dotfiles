@@ -10,7 +10,6 @@ brew "neofetch"
 brew "neovim"
 brew "node"
 brew "rust"
-brew "tmux"
 brew "wget"
 
 cask "google-chrome"
