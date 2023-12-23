@@ -22,15 +22,15 @@ cpwd() {
 	fi
 }
 
-uuid() {
-	if [[ $1 ]]
-	then
-		uuids = uuidgen | tr '[:upper:]' '[:lower:]'
-		for i in {1..$1 - 1}
-		do
-			uuids = ${uuids} uuidgen | tr '[:upper:]' '[:lower:]'
-		done
-	else
-		uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\n' | pbcopy
-	fi
-}
+#uuid() {
+#	if [[ $1 ]]
+#	then
+#		uuids = uuidgen | tr '[:upper:]' '[:lower:]'
+#		for i in {1..$1 - 1}
+#		do
+#			uuids = ${uuids} uuidgen | tr '[:upper:]' '[:lower:]'
+#		done
+#	else
+#		uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\n' | pbcopy
+#	fi
+#}

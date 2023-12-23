@@ -20,7 +20,7 @@ if [[ -t 0 ]]; then
   source $DOT_DIR/zsh/aliases.zsh
   source $DOT_DIR/zsh/prompt.zsh
 
-  theoshell_plug marlonrichert/zsh-autocomplete
+  marlonrichert/zsh-autocomplete
 
   source $DOT_DIR/zsh/greeting.zsh
   zsh_greeting
