@@ -67,11 +67,7 @@ Tools in this repository are mostly open-source utilities for development.
         ```
     - Basic aliases: `cdf` to navigate directories quickly using `fzf`,
         `cl` to `clear`, `l` to `ls` with list view and other options, `histgrep` to look up previous commands
-    - `trash`, `trash_cd`, `trash_empty`, `trash_print`: trash related functions.
-        The trash directory is located in `~/.theoshell/trash`. This directory will be used again for LF
-    - `theoshell_plug <github-username>/<repo-name>`: installs Zsh plug-in from a GitHub repository (to `~/.theoshell/zsh-plugins`) and/or source it
-        - I only install [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) by default
-    - `theoshell_upgrade`: Upgrade all Zsh plug-ins in `~/.theoshell/zsh-plugins`
+    - I only install [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) by default
 
 ## Terminal Emulators and Multiplexers
 
@@ -113,7 +109,6 @@ When I see a CLI file manager with Vim keybindings and a minimalistic feature se
     - `~` : Go to the home directory
     - `ee`: Open a file in `$EDITOR`
     - `ec`: You choose what editor you want to open a file in
-    - `DD`: Move a file to `~/.theoshell/trash` (it integrates with my Zsh trash functions)
     - `gs`: [g]it [s]tatus
     - `md`: mkdir
     - `mf`: Open a file with the supplied name in Neovim
