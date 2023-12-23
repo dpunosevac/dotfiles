@@ -25,23 +25,6 @@ set smartcase
 # !  shell-wait      shell command waiting for key press
 # &  shell-async     shell command running asynchronously
 
-# Automatically create trash folder upon the startup
-${{ if [ ! -d ~/.dpunosevac/trash ]; then mkdir -p ~/.dpunosevac/trash; fi }}
-# $f = current cursor, $fs = selected files, $fx = ($fs exists) ? ($fs) : ($f)
-cmd trash !{{ IFS="$(printf '\n\t')"; mv $fx ~/.dpunosevac/trash && printf ":) $fx moved to trash!\n" || printf ":( Failed to move $fx to trash\n" }}
-
-# Remove command for bypassing trash
-cmd rm !{{
-  printf " Remove following files?\n $fx\n"
-  printf ' [y]es/[n]o: '
-  read ans
-  if [ "$ans" = 'y' ]; then # this is the syntax for [ ... ], use == for [[ ... ]]
-    IFS="$(printf '\n\t')"; rm -rf $fx; printf "Following files have been removed!\n $fx\n";
-  else
-    printf ' Removal canceled \n'
-  fi
-}}
-
 cmd choose_editor ${{
   printf ' Editor to open the file with: '
   read ans
@@ -208,7 +191,6 @@ map sh $$SHELL
 map ~ cd ~
 
 map ff fzf_jump
-map DD trash
 map gs !git status
 map md mkdir
 map mf mkfile
