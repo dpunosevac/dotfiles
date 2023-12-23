@@ -1,24 +1,11 @@
---- wezterm.lua
---- $ figlet -f small Wezterm
---- __      __      _
---- \ \    / /__ __| |_ ___ _ _ _ __
----  \ \/\/ / -_)_ /  _/ -_) '_| '  \
----   \_/\_/\___/__|\__\___|_| |_|_|_|
----
---- My Wezterm config file
-
 local wezterm = require("wezterm")
 local act = wezterm.action
-
-local fish_path = "/opt/homebrew/bin/fish"
 
 local config = {}
 -- Use config builder object if possible
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Settings
-config.default_prog = { fish_path, "-l" }
-
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
   { family = "Iosevka Nerd Font",  scale = 1.24, weight = "Medium", },
@@ -174,16 +161,5 @@ wezterm.on("update-status", function(window, pane)
     { Text = "  " },
   }))
 end)
-
---[[ Appearance setting for when I need to take pretty screenshots
-config.enable_tab_bar = false
-config.window_padding = {
-  left = '0.5cell',
-  right = '0.5cell',
-  top = '0.5cell',
-  bottom = '0cell',
-
-}
---]]
 
 return config

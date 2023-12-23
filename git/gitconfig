@@ -1,14 +1,12 @@
 [user]
-	name = Theo P
-	email = theo.park.n@gmail.com
-#	email = 63016528+theopn@users.noreply.github.com
-#	email = 11766464-theopn@users.noreply.gitlab.com
+	name = Dusan Punosevac
+	email = dusan.punosevac@gmail.com
 [core]
-	excludesfile = /Users/parktheo0/.gitignore_global
+	excludesfile = /Users/dpunosevac/.gitignore_global
 	editor = vim
 	autocrlf = input
 [fetch]
-  # Delete out deted branch during fetch
+  	# Delete out deted branch during fetch
 	prune = true
 [init]
 	defaultBranch = main

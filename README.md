@@ -24,7 +24,7 @@ Tools in this repository are mostly open-source utilities for development.
 
 - Configure cross-platform utilities using the following commands:
     ```bash
-    git clone https://github.com/theopn/dotfiles.git ~/dotfiles
+    git clone https://github.com/dpunosevac/dotfiles.git ~/dotfiles
     ~/dotfiles/dotfiles-util.sh --install
     ~/dotfiles/dotfiles-util.sh --delete-backup # Optional
     ```

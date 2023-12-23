@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DOT_DIR=~/dotfiles
-export DOT_BACKUP_DIR=~/dotfiles.bu
+export DOT_BACKUP_DIR=~/dotfiles_backup
 
 ########## HELPER FUNCTIONS ##########
 
@@ -65,35 +65,14 @@ function backup_then_symlink() {
 # Installs cross-platform core utilities
 function install() {
   green_echo "
-   _____ _              ___      _    __ _ _
-  |_   _| |_  ___ ___  |   \ ___| |_ / _(_) |___ ___
-    | | | ' \/ -_) _ \ | |) / _ \  _|  _| | / -_|_-<
-    |_| |_||_\___\___/ |___/\___/\__|_| |_|_\___/__/
+       ____                        _          ____        __  _____ __         
+      / __ \__  ___________ _____ ( )_____   / __ \____  / /_/ __(_) /__  _____
+     / / / / / / / ___/ __ `/ __ \|// ___/  / / / / __ \/ __/ /_/ / / _ \/ ___/
+    / /_/ / /_/ (__  ) /_/ / / / / (__  )  / /_/ / /_/ / /_/ __/ / /  __(__  ) 
+   /_____/\__,_/____/\__,_/_/ /_/ /____/  /_____/\____/\__/_/ /_/_/\___/____/  
   "
 
   verify_script_dir
-
-  if selection_prompt 'Doom'; then
-    CURRENT_FILES=("init.el" "config.el" "packages.el")
-    mkdir -p ~/.doom.d/
-    for FILE in ${CURRENT_FILES[@]}; do
-      backup_then_symlink ${DOT_DIR}/doom.d/${FILE} ~/.doom.d/${FILE}
-    done
-  fi
-
-  if selection_prompt 'Fish'; then
-    CURRENT_FILES=("config.fish" "alias.fish")
-    mkdir -p ~/.config/fish/
-    for FILE in ${CURRENT_FILES[@]}; do
-      backup_then_symlink ${DOT_DIR}/fish/${FILE} ~/.config/fish/${FILE}
-    done
-    # Fish functions
-    CURRENT_FILES=("fish_prompt.fish")
-    mkdir -p ~/.config/fish/functions/
-    for FILE in ${CURRENT_FILES[@]}; do
-      backup_then_symlink ${DOT_DIR}/fish/functions/${FILE} ~/.config/fish/functions/${FILE}
-    done
-  fi
 
   if selection_prompt 'Git'; then
     CURRENT_FILES=("gitignore_global" "gitconfig")
@@ -102,33 +81,13 @@ function install() {
     done
   fi
 
-  if selection_prompt 'lf'; then
-    CURRENT_FILES=('lfrc' 'icons')
-    mkdir -p ~/.config/lf/
-    for FILE in ${CURRENT_FILES[@]}; do
-      backup_then_symlink ${DOT_DIR}/lf/${FILE} ~/.config/lf/${FILE}
-    done
-  fi
-
-  if selection_prompt 'Qutebrowser'; then
-    if [[ "${OSTYPE}" == "darwin"* ]]; then
-      mkdir -p ~/.qutebrowser/
-      backup_then_symlink ${DOT_DIR}/qutebrowser/config.py ~/.qutebrowser/config.py
-    elif [[ "${OSTYPE}" == "linux-gnu"* ]];then
-      mkdir -p ~/.config/qutebrowser/
-      backup_then_symlink ${DOT_DIR}/qutebrowser/config.py ~/.config/qutebrowser/config.py
-    fi
-  fi
-
-  if selection_prompt 'Tmux'; then
-    backup_then_symlink ${DOT_DIR}/tmux/tmux.conf ~/.tmux.conf
-  fi
-
-  if selection_prompt 'Vim'; then
-    backup_then_symlink ${DOT_DIR}/vim/vimrc ~/.vimrc
-    mkdir -p ~/.vim/
-    backup_then_symlink ${DOT_DIR}/vim/colors ~/.vim/colors
-  fi
+  # if selection_prompt 'lf'; then
+  #   CURRENT_FILES=('lfrc' 'icons')
+  #   mkdir -p ~/.config/lf/
+  #   for FILE in ${CURRENT_FILES[@]}; do
+  #     backup_then_symlink ${DOT_DIR}/lf/${FILE} ~/.config/lf/${FILE}
+  #   done
+  # fi
 
   if selection_prompt 'Wezterm'; then
     mkdir -p ~/.config/wezterm/
@@ -224,22 +183,6 @@ function delete_backup() {
   rm -rf $DOT_BACKUP_DIR
 }
 
-# Prompts user and adds SSH host and user to ~/.ssh/config
-function add_ssh_shortcut() {
-  mkdir -p ~/.ssh/
-  [[ ! -e ~/.ssh/config ]] && touch ~/.ssh/config
-  echo -n 'add_ssh_shortcut) Enter host nickname (e.g. data): '
-  read host_nickname
-  echo -n 'add_ssh_shortcut) Enter host URL (e.g. data.cs.best.school.in.the.world.located.in.west.lafayette.edu): '
-  read host_url
-  echo -n 'add_ssh_shortcut) Enter username for the host (e.g. good_student_69): '
-  read username
-  echo "Host $host_nickname
-    Hostname $host_url
-    User $username" >> ~/.ssh/config
-  green_echo "${username}@${host_url} has been added to the SSH config! Try <ssh ${host_nickname}>."
-}
-
 # Installs font from the supplied URL to ~/.local/share/fonts
 # $1: URL of the font zip file to be installed
 #     It is highly recommended that the URL comes from https://nerdfonts.com/font-downloads
@@ -291,9 +234,6 @@ function main() {
     ;;
     "--delete-backup")
       delete_backup
-    ;;
-    "--add-ssh-shortcut")
-      add_ssh_shortcut
     ;;
     "--install-font")
       install_font $2

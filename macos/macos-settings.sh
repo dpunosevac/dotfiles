@@ -29,15 +29,13 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder DisableAllAnimations -bool true
 killall Finder
 
-# Set key repeat speed
-# Initial repeat is default 15 (225ms). Don't set this too fast since it can trigger accidental key press
-#defaults write -g InitialKeyRepeat -int 15
-# Options: 1 (15ms), 2 (30ms -- default)
-#defaults write -g KeyRepeat -int 1
-
 # Set the screenshot location
 defaults write com.apple.screencapture location -string "${HOME}/Downloads"
 # Set the screenshot format to be jpeg
 defaults write com.apple.screencapture type -string "jpg"
+
+# Set up custom key shortcuts for Google Chrome
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Select Next Tab" "@]"
+defaults write com.omnigroup.OmniFocus2 NSUserKeyEquivalents -dict-add "Show Previous Tab" "^\\U005B"
 
 echo "Mac OS settings have been completed!"
