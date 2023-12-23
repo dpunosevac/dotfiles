@@ -1,7 +1,7 @@
-# Theo's dotfiles
+# Dusan's dotfiles
 
 > [!NOTE]
-> Collection of my configuration files. The reason why this README is so long is definitely not because I like wasting time writing documentation that no one will ever read instead of doing actual work.
+> Inspired by awesome [Theo's Dotfiles](https://github.com/theopn/dotfiles)
 
 | ![macos-sc](./assets/macos-sc.jpg) |
 |:--:|
@@ -17,7 +17,7 @@ MBA runs the latest version of macOS, and X270 runs the latest version of Fedora
 Tools in this repository are mostly open-source utilities for development.
 
 > [!IMPORTANT]
-> You are welcome to take inspiration from any files in this repository, but I do not claim any responsibility for any of the contents of the configurations (licensed under the MIT License).
+> You are welcome to take inspiration from any files in this repository. Still, I do not claim any responsibility for any of the contents of the configurations (licensed under the MIT License).
 > **Read the code before you use it!**
 
 ## Installation
