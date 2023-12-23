@@ -3,16 +3,8 @@
 > [!NOTE]
 > Inspired by awesome [Theo's Dotfiles](https://github.com/theopn/dotfiles)
 
-| ![macos-sc](./assets/macos-sc.jpg) |
-|:--:|
-| macOS |
-
-| ![fedora-sc](https://raw.githubusercontent.com/theopn/haunted-tiles/main/assets/sway-sc.png) |
-|:--:|
-| Fedora w/ Sway WM |
-
-Here are dotfiles for my systems, M1 MacBook Air and Lenovo ThinkPad X270.
-MBA runs the latest version of macOS, and X270 runs the latest version of Fedora Sway Spin with i3 WM installed (Wayland is *almost* there).
+Here are dotfiles for my systems, M2 MacBook Pro and Intel MacBook Pro.
+MBPs run the latest version of macOS.
 
 Tools in this repository are mostly open-source utilities for development.
 
