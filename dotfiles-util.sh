@@ -81,13 +81,13 @@ function install() {
     done
   fi
 
-  # if selection_prompt 'lf'; then
-  #   CURRENT_FILES=('lfrc' 'icons')
-  #   mkdir -p ~/.config/lf/
-  #   for FILE in ${CURRENT_FILES[@]}; do
-  #     backup_then_symlink ${DOT_DIR}/lf/${FILE} ~/.config/lf/${FILE}
-  #   done
-  # fi
+  if selection_prompt 'lf'; then
+    CURRENT_FILES=('lfrc' 'icons')
+    mkdir -p ~/.config/lf/
+    for FILE in ${CURRENT_FILES[@]}; do
+      backup_then_symlink ${DOT_DIR}/lf/${FILE} ~/.config/lf/${FILE}
+    done
+  fi
 
   if selection_prompt 'Wezterm'; then
     mkdir -p ~/.config/wezterm/
