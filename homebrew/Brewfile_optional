@@ -3,7 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 
 brew "ffmpeg"
-brew figlet
+brew "figlet"
 brew "hugo"
 brew "imagemagick"
 brew "rclone"
