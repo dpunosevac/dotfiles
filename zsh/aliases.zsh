@@ -9,6 +9,7 @@ alias gs='git status'
 alias gpl='git pull'
 alias gp='git push'
 alias gc='git commit -m'
+alias vim='nvim'
 
 # These personal aliases require various other env var from .zshrc
 alias dot="cd \"$DOT_DIR\""
