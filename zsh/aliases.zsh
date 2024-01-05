@@ -4,6 +4,11 @@
 alias cl='clear'
 alias histgrep='echo "[Tip] Use !number to execute the command" && history -i | grep' # -i for the timestamp
 alias l='ls -A -l -h --color=auto' # All file except . and .., list view, display unit suffix for the size
+alias ..='cd ..'
+alias gs='git status'
+alias gpl='git pull'
+alias gp='git push'
+alias gc='git commit -m'
 
 # These personal aliases require various other env var from .zshrc
 alias dot="cd \"$DOT_DIR\""
