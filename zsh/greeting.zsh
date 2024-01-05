@@ -78,7 +78,6 @@ function zsh_greeting() {
        ( T   ))        )
       (((^_(((/___(((_/
     ' \
-    '
   )
   # 1. RANDOM is biased toward the lower index
   # 2. Array index in ZSH starts at 1

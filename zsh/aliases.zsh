@@ -4,7 +4,6 @@
 alias cl='clear'
 alias histgrep='echo "[Tip] Use !number to execute the command" && history -i | grep' # -i for the timestamp
 alias l='ls -A -l -h --color=auto' # All file except . and .., list view, display unit suffix for the size
-alias weather="curl 'https://wttr.in'"
 
 # These personal aliases require various other env var from .zshrc
 alias dot="cd \"$DOT_DIR\""
@@ -22,15 +21,18 @@ cpwd() {
 	fi
 }
 
-#uuid() {
-#	if [[ $1 ]]
-#	then
-#		uuids = uuidgen | tr '[:upper:]' '[:lower:]'
-#		for i in {1..$1 - 1}
-#		do
-#			uuids = ${uuids} uuidgen | tr '[:upper:]' '[:lower:]'
-#		done
-#	else
-#		uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\n' | pbcopy
-#	fi
-#}
+uuid() {
+	if [ -z "$1" ]
+	then
+		echo "No argument supplied"
+	fi
+	
+	uuids=""
+	for i in `seq 1 $1`
+	do
+		uuids="$uuids $(uuidgen | tr '[:upper:]' '[:lower:]')\n"
+	done
+	
+	echo $uuids | pbcopy
+}
+

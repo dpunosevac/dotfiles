@@ -19,8 +19,8 @@ export DOT_DIR=~/dotfiles
 if [[ -t 0 ]]; then
   source $DOT_DIR/zsh/aliases.zsh
   source $DOT_DIR/zsh/prompt.zsh
-
-  marlonrichert/zsh-autocomplete
+  
+  source ~/.zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
   source $DOT_DIR/zsh/greeting.zsh
   zsh_greeting
