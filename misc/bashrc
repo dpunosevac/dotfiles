@@ -1,6 +1,8 @@
 # Custom exports - for Kitty terminal and lf
 export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 # Not very special alias
 alias cl="clear"
@@ -31,4 +33,3 @@ greeting() {
 
 [[ -t 0 ]] && greeting # check if file descriptor 0 (stdin) is attached to tty
 PS1="\[\e[0;36m\]-> \e[0;34m\]\u \[\e[0;36m\]@ \e[0;35m\h \[\e[36m\]in \e[1;31m\]\w \[\e[0m\]) "
-
