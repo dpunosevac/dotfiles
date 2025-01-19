@@ -3,6 +3,8 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # Not very special alias
 alias cl="clear"

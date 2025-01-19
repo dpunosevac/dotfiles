@@ -17,6 +17,7 @@ export DOT_DIR=~/dotfiles
 
 # Sourcing
 if [[ -t 0 ]]; then
+  source $DOT_DIR/misc/bashrc
   source $DOT_DIR/zsh/aliases.zsh
   source $DOT_DIR/zsh/prompt.zsh
   
