@@ -8,8 +8,8 @@ if wezterm.config_builder then config = wezterm.config_builder() end
 -- Settings
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
+  { family = "JetBrainsMono Nerd Font", scale=1.24, weight = "Medium"},
   { family = "Iosevka Nerd Font",  scale = 1.24, weight = "Medium", },
-  { family = "CaskaydiaCove Nerd Font",  scale = 1.2 },
 })
 config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
