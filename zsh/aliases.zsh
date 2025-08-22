@@ -11,12 +11,6 @@ alias gp='git push'
 alias gc='git commit -m'
 alias vim='nvim'
 
-# k8 
-alias kdev="kubectl config use-context gke_pledge-dev-267910_us-west1_rho-dev"
-alias kstage="kubectl config use-context gke_pledge-staging_us-west1_rho-stage"
-alias kprod="kubectl config use-context gke_pledge-218909_us-west1_rho-prod"
-alias ktdev="kubectl config use-context gke_rho-platform-dev_us-west1_platform"
-
 alias gtoken="gcloud auth print-access-token"
 #
 # These personal aliases require various other env var from .zshrc
