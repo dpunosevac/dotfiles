@@ -10,6 +10,8 @@ alias gpl='git pull'
 alias gp='git push'
 alias gc='git commit -m'
 alias vim='nvim'
+alias grep="ggrep"
+alias lzd="lazydocker"
 
 alias gtoken="gcloud auth print-access-token"
 #
