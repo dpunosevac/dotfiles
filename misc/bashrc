@@ -1,6 +1,7 @@
 # Custom exports - for Kitty terminal and lf
 export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
+export CONFIG_DIR="$HOME/.config"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
