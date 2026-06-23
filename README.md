@@ -113,12 +113,6 @@ I use [AeroSpace](https://github.com/nikitabobko/AeroSpace) and [Sketchybar](htt
 
 Setup:
 
-**Disable macOS window animations** (run once, then log out and back in):
-```bash
-defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
-defaults write -g NSWindowResizeTime -float 0.001
-```
-
 - "Desktop & Dock" (Menu Bar) -> "Automatically hide and show the menu bar" -> "Always"
 - "Keyboard" -> "Keyboard Shortcuts" -> "Mission Control" -> disable all "Switch to Desktop n" shortcuts (AeroSpace manages its own workspaces)
 - Grant AeroSpace Accessibility and Input Monitoring permissions in System Settings → Privacy & Security
@@ -174,4 +168,16 @@ Formulae:
 
 ### Settings
 
-Remove Dock unhide animation, add a Dock spacer, show hidden files in Finder, change screenshot format and location (I like having every temporary file in `~/Downloads/`), etc.
+Applied by `~/dotfiles/dotfiles-util.sh --macos-install` via `macos/macos-settings.sh`:
+
+**Dock:** autohide with zero delay, spacer between pinned/open apps, translucent hidden app icons
+
+**Finder:** show hidden files, show all extensions, full POSIX path in title, path bar, folders first, list view, no animations
+
+**Screenshots:** save to `~/Downloads/` as JPG
+
+**Window animations** (run once manually, then log out/in):
+```bash
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSWindowResizeTime -float 0.001
+```
