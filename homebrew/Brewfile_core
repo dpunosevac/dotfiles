@@ -2,6 +2,7 @@ tap "nikitabobko/tap"
 tap "FelixKratz/formulae"
 
 brew "FelixKratz/formulae/sketchybar"
+brew "FelixKratz/formulae/borders"
 brew "fzf"
 brew "htop"
 brew "jq"

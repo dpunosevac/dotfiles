@@ -112,6 +112,12 @@ I use [AeroSpace](https://github.com/nikitabobko/AeroSpace) and [Sketchybar](htt
 
 Setup:
 
+**Disable macOS window animations** (run once, then log out and back in):
+```bash
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSWindowResizeTime -float 0.001
+```
+
 - "Desktop & Dock" (Menu Bar) -> "Automatically hide and show the menu bar" -> "Always"
 - "Keyboard" -> "Keyboard Shortcuts" -> "Mission Control" -> disable all "Switch to Desktop n" shortcuts (AeroSpace manages its own workspaces)
 - Install AeroSpace and Sketchybar:
@@ -124,6 +130,7 @@ Setup:
     ~/dotfiles/dotfiles-util.sh --aerospace-install
     open -a AeroSpace
     brew services start sketchybar
+    brew services start borders
     ```
 
 Keybindings (`alt` = `⌥`):
@@ -166,7 +173,7 @@ Formulae:
 |-----------------|------------------------------------------------|
 | Development     | - Docker<br> - **Wezterm**                     |
 | Productivity    | - **Itsycal**                                  |
-| System (macOS)  | - **AeroSpace**<br> - **Maccy**<br> - **Sketchybar** |
+| System (macOS)  | - **AeroSpace**<br> - **Borders**<br> - **Maccy**<br> - **Sketchybar** |
 
 ### Settings
 

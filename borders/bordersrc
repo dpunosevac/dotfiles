@@ -1,0 +1,10 @@
+#!/bin/bash
+
+options=(
+  active_color=0xff7aa2f7   # Tokyo Night blue
+  inactive_color=0xff414868 # Tokyo Night dark gray
+  width=3.0
+  style=round
+)
+
+borders "${options[@]}"

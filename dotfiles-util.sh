@@ -159,6 +159,11 @@ function aerospace_install() {
   if selection_prompt 'AeroSpace'; then
     backup_then_symlink ${DOT_DIR}/aerospace/aerospace.toml ~/.aerospace.toml
   fi
+
+  if selection_prompt 'Borders'; then
+    mkdir -p ~/.config/borders
+    backup_then_symlink ${DOT_DIR}/borders/bordersrc ~/.config/borders/bordersrc
+  fi
 }
 
 ########## AUXILIARY FUNCTIONS ##########
