@@ -31,11 +31,12 @@ brew analytics off
 ~/dotfiles/dotfiles-util.sh --delete-backup # Optional
 ```
 
-**4. Set up tiling WM**
+**4. Set up tiling WM** (packages already installed by step 2)
 ```bash
 ~/dotfiles/dotfiles-util.sh --aerospace-install
 open -a AeroSpace
 brew services start sketchybar
+brew services start borders
 ```
 See [macOS Tiling WM Setup](#macos-tiling-wm-setup) for required macOS settings.
 
@@ -120,10 +121,6 @@ defaults write -g NSWindowResizeTime -float 0.001
 
 - "Desktop & Dock" (Menu Bar) -> "Automatically hide and show the menu bar" -> "Always"
 - "Keyboard" -> "Keyboard Shortcuts" -> "Mission Control" -> disable all "Switch to Desktop n" shortcuts (AeroSpace manages its own workspaces)
-- Install AeroSpace and Sketchybar:
-    ```bash
-    brew install --cask nikitabobko/tap/aerospace FelixKratz/formulae/sketchybar
-    ```
 - Grant AeroSpace Accessibility and Input Monitoring permissions in System Settings → Privacy & Security
 - Symlink config and start:
     ```bash
