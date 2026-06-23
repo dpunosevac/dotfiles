@@ -10,3 +10,5 @@
 # Sad web dev noise
 npm-debug.log
 
+
+**/.claude/settings.local.json

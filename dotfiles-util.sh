@@ -81,14 +81,6 @@ function install() {
     done
   fi
 
-  if selection_prompt 'lf'; then
-    CURRENT_FILES=('lfrc' 'icons')
-    mkdir -p ~/.config/lf/
-    for FILE in ${CURRENT_FILES[@]}; do
-      backup_then_symlink ${DOT_DIR}/lf/${FILE} ~/.config/lf/${FILE}
-    done
-  fi
-
   if selection_prompt 'Wezterm'; then
     mkdir -p ~/.config/wezterm/
     backup_then_symlink ${DOT_DIR}/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
@@ -146,8 +138,8 @@ function macos-install() {
   yellow_echo 'Ending the macos specific installation...'
 }
 
-function yabai_install() {
-  green_echo "Starting i3 WM specific installlation process..."
+function aerospace_install() {
+  green_echo "Starting AeroSpace WM installation process..."
 
   verify_script_dir
 
@@ -164,14 +156,8 @@ function yabai_install() {
     done
   fi
 
-  if selection_prompt 'Yabai'; then
-    mkdir -p ~/.config/yabai/
-    backup_then_symlink ${DOT_DIR}/yabai/yabairc ~/.config/yabai/yabairc
-  fi
-  
-  if selection_prompt 'Skhd'; then
-    mkdir -p ~/.config/skhd/
-    backup_then_symlink ${DOT_DIR}/skhd/skhdrc ~/.config/skhd/skhdrc
+  if selection_prompt 'AeroSpace'; then
+    backup_then_symlink ${DOT_DIR}/aerospace/aerospace.toml ~/.aerospace.toml
   fi
 }
 
@@ -211,7 +197,7 @@ function help() {
   args:
     --install             : Deploy configuration symlinks for cross-platform utilities
     --macos-install       : Deploy configuration symlinks for macOS and related utilities
-    --yabai-install       : Deploy configuration symlinks for Yabai and macOS Tiling WM utilities
+    --aerospace-install   : Deploy configuration symlinks for AeroSpace and macOS Tiling WM utilities
     --delete-backup       : Delete $DOT_BACKUP_DIR
     --add-ssh-shortcut    : Add a new SSH shortcut at ~/.ssh/config
     --install-font <URL>  : wget a font file from URL (preferably from NERDFont website) and install it at ~/.local/share/fonts/
@@ -229,8 +215,8 @@ function main() {
     "--macos-install")
       macos-install
     ;;
-    "--yabai-install")
-      yabai_install
+    "--aerospace-install")
+      aerospace_install
     ;;
     "--delete-backup")
       delete_backup

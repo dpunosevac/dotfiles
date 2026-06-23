@@ -24,8 +24,7 @@ if [[ -t 0 ]]; then
   source ~/.zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
   source ~/.zsh_plugins/zsh-kubectl-promp/zsh-kubectl-prompt.plugin.zsh
 
-  source $DOT_DIR/zsh/greeting.zsh
-  zsh_greeting
+  neofetch
 fi
 
 
@@ -41,3 +40,12 @@ if [ -f '/Users/dusan.punosevac/Downloads/google-cloud-sdk/completion.zsh.inc' ]
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh) # add autocomplete permanently to your zsh shell
 
 bindkey "^R" history-incremental-search-backward
+export PATH="$HOME/.local/bin:$PATH"
+
+# bun completions
+[ -s "/Users/dpunosevac/.bun/_bun" ] && source "/Users/dpunosevac/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"

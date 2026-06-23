@@ -118,20 +118,21 @@ sketchybar --add item seperator.l1 left                   						    \
                                    icon.drawing=off       						    \
                                    label.drawing=off
 
-# Mission control items
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7")
-SPACE_LABELS=("$ICON_PRODUCTIVITY" "$ICON_WEB" "$ICON_DEV" "$ICON_CHAT" "$ICON_SPACE" "" "")
+# AeroSpace workspace items
+SPACE_ICONS=("1" "2" "3" "4" "5")
+SPACE_LABELS=("$ICON_PRODUCTIVITY" "$ICON_WEB" "$ICON_DEV" "$ICON_CHAT" "$ICON_SPACE")
 
-# Border will be drawn to current WS only
+sketchybar --add event aerospace_workspace_change
+
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
-  sketchybar --add space space.$sid left                                 				    \
-             --set space.$sid associated_space=$sid                      				    \
-                              icon=${SPACE_ICONS[i]}                     				    \
+  sketchybar --add item space.$sid left                                  				    \
+             --set space.$sid icon=${SPACE_ICONS[i]}                     				    \
                               label=${SPACE_LABELS[i]}                   				    \
                               background.border_width=1                  				    \
-                              script="$PLUGIN_DIR/space.sh" # Highlights the current ws
+                              script="$PLUGIN_DIR/space.sh"              				    \
+             --subscribe space.$sid aerospace_workspace_change
 done
 
 # Group all spaces together

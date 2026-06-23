@@ -1,0 +1,60 @@
+start-at-login = true
+
+# sketchybar gets notified on every workspace switch
+exec-on-workspace-change = ['/bin/bash', '-c',
+  '/usr/local/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+
+[gaps]
+inner.horizontal = 10
+inner.vertical   = 10
+outer.left       = 10
+outer.right      = 10
+outer.top        = 40  # sketchybar 30px bar + 5px y_offset + margin
+outer.bottom     = 10
+
+[mode.main.binding]
+# Applications
+alt-enter = 'exec-and-forget open -a WezTerm'
+
+# Focus window (same as yabai via skhd)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Move window — replaces both yabai --swap and --warp
+shift-alt-h = 'move left'
+shift-alt-j = 'move down'
+shift-alt-k = 'move up'
+shift-alt-l = 'move right'
+
+# Layout
+alt-f = 'fullscreen'
+shift-alt-space = 'layout floating tiling'
+alt-e           = 'balance-sizes'
+
+# Switch workspace — ctrl+N matches macOS native Mission Control shortcut you were using
+ctrl-1 = 'workspace 1'
+ctrl-2 = 'workspace 2'
+ctrl-3 = 'workspace 3'
+ctrl-4 = 'workspace 4'
+ctrl-5 = 'workspace 5'
+
+# Move window to workspace (same modifier as skhd: shift+alt+N)
+shift-alt-1 = 'move-node-to-workspace 1'
+shift-alt-2 = 'move-node-to-workspace 2'
+shift-alt-3 = 'move-node-to-workspace 3'
+shift-alt-4 = 'move-node-to-workspace 4'
+shift-alt-5 = 'move-node-to-workspace 5'
+
+# Restart sketchybar
+ctrl-alt-s = 'exec-and-forget brew services restart sketchybar'
+
+# Float rules (replaces yabai rules)
+[[on-window-detected]]
+if.app-name-regex-substring = 'Calculator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'System Settings'
+run = 'layout floating'

@@ -29,9 +29,9 @@ Tools in this repository are mostly open-source utilities for development.
     ~/dotfiles/dotfiles-util.sh --macos-install
     ```
 
-- Configure Yabai, Skhd, and Sketchybar for macOS tiling WM setup using the following commands:
+- Configure AeroSpace and Sketchybar for macOS tiling WM setup using the following commands:
     ```bash
-    ~/dotfiles/dotfiles-util.sh --yabai-install
+    ~/dotfiles/dotfiles-util.sh --aerospace-install
     ```
     Don't forget to follow the further instructions in [the macOS tiling WM section](#macos-tiling-wm-setup)
 
@@ -48,9 +48,8 @@ Tools in this repository are mostly open-source utilities for development.
         ~/dotfiles/dotfiles-util.sh --install-font $FONT_URL
         ```
 
-- To install Iosevka Nerd Font (for terminal emulators and text editors) and CaskayadiaCove Nerd Fonts (for window managers) using Homebrew:
+- To install CaskaydiaCove and Fantasque Sans Mono Nerd Fonts using Homebrew:
     ```bash
-    brew tap homebrew/cask-fonts &&
     brew install --cask font-caskaydia-cove-nerd-font font-fantasque-sans-mono-nerd-font
     ```
 
@@ -69,7 +68,7 @@ Tools in this repository are mostly open-source utilities for development.
         `cl` to `clear`, `l` to `ls` with list view and other options, `histgrep` to look up previous commands
     - I only install [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) by default
 
-## Terminal Emulators and Multiplexers
+## Terminal Emulator
 
 ### Wezterm
 
@@ -97,25 +96,6 @@ Watch my YouTube video [Configure Wezterm terminal emulator in Lua with me [ASMR
     - `LDR w`: Workspace launcher
     - `$ wezterm show-keys --lua` to get the Lua table of all keybindings available
 
-## File Manager
-
-### lf
-
-> My favorite terminal file manager
-
-When I see a CLI file manager with Vim keybindings and a minimalistic feature set, I like it. I use it.
-
-- Usage:
-    - `~` : Go to the home directory
-    - `ee`: Open a file in `$EDITOR`
-    - `ec`: You choose what editor you want to open a file in
-    - `gs`: [g]it [s]tatus
-    - `md`: mkdir
-    - `mf`: Open a file with the supplied name in Neovim
-    - `ml`, `mr`, `ms`: [m]ark [l]oad, [m]ark [r]emove, [m]ark [s]ave
-    - `mo`: chmod
-    - `sh`: Launch `$SHELL` at the current directory
-
 ## Other Tools
 
 ### Git
@@ -131,78 +111,39 @@ No comments.
 > These are meant to be manually deployed as needed.
 > Use the commands in `./misc/README.md` to deploy these configurations.
 
-- `bashrc`: I prioritize simplicity and performance since Zsh and Fish take care of my interactive uses and most of my scripts are written in Bash.
-    Thus, my `.bashrc` is kept minimal with a simple prompt, some aliases, and variables
-- `ideavimrc`: Sorry to disappoint you, but I code in Java sometimes
-- `neofetch.conf`: It includes a prompt inspired by "insert name" from [Neofetch Themes](https://github.com/Chick2D/neofetch-themes)
+- `bashrc`: Minimal config with a simple prompt, some aliases, and PATH variables. Zsh handles interactive use; Bash for scripts.
 
 ## macOS Tiling WM Setup
 
-I use these [Yabai](https://github.com/koekeishiya/yabai), [Skhd](https://github.com/koekeishiya/skhd), and [Sketchybar](https://github.com/FelixKratz/SketchyBar) to make a Tokyo-Night-themed tiling WM setup for my macOS environment.
+I use [AeroSpace](https://github.com/nikitabobko/AeroSpace) and [Sketchybar](https://github.com/FelixKratz/SketchyBar) for a Tokyo-Night-themed tiling WM setup. AeroSpace does not require disabling SIP.
 
-To begin, modify the macOS settings as follows:
+Setup:
 
-- "Desktop & Dock" (Mission Control) -> "Displays have separate Spaces" -> On
 - "Desktop & Dock" (Menu Bar) -> "Automatically hide and show the menu bar" -> "Always"
-- Make shortcuts for switching desktops using a built-in macOS key modifier (if you are to use Skhd for this, it requires disabling SIP)
-    - Create 5 Mission Control desktops
-    - "Keyboard" -> "Keyboard Shortcuts" -> "Mission Control" -> "Mission Control" -> Turn on "Switch to Desktop n" (where "n" is the number 1 - 5)
-    - Set the shortcut to `^n` (`Ctrl n`) or `⌥n` (`Opt n`)
-    - While you are at it, go to "Modifier Keys" and switch "Caps Lock key" and "Control key". Your pinky will thank you
-
-Install and start utilities:
-
-- Install Yabai, Skhd, and Sketchybar:
+- "Keyboard" -> "Keyboard Shortcuts" -> "Mission Control" -> disable all "Switch to Desktop n" shortcuts (AeroSpace manages its own workspaces)
+- Install AeroSpace and Sketchybar:
     ```bash
-    brew install koekeishiya/formulae/skhd koekeishiya/formulae/yabai FelixKratz/formulae/sketchybar
+    brew install --cask nikitabobko/tap/aerospace FelixKratz/formulae/sketchybar
     ```
-- Start Skhd:
+- Grant AeroSpace Accessibility and Input Monitoring permissions in System Settings → Privacy & Security
+- Symlink config and start:
     ```bash
-    skhd --start-service
+    ~/dotfiles/dotfiles-util.sh --aerospace-install
+    open -a AeroSpace
+    brew services start sketchybar
     ```
-- Use `ctrl + alt - s` keybinding (ctrl + opt + s) to start sketchybar and Yabai.
-- Use `ctrl + alt - q` keybinding (ctrl + opt + q) to stop sketchybar and Yabai.
 
-Keybindings:
+Keybindings (`alt` = `⌥`):
 
-- The `opt`/`alt` (`⌥`) key is the modifier
-- `mod + ret`: Open Wezterm
-- `mod + hjkl`: Navigate windows
-- `mod + f`: Toggle fullscreen
-- `mod + shift + r`: Rotate tree
-- `mod + shift + y/x`: Mirror x-axis/y-axis
-- `mod + shift + SPC`: Toggle floating
-- `mod + shift + e`: Balance all window size
-- `mod + shift + hjkl`: ~~Resize window (h to shrink left, j to grow above, k to shrink below, l to grow right)~~ Swap window (use mouse for resizing)
-- `mod + ctrl + hjkl`: Move window and tile with what was already there
-- `mod + shift + 1-5`: Move to WS 1-5
-
-Yabai is a fantastic tool, but because it's running on top of Aqua (macOS default WM), there are a few limitations.
-Here are some bugs I encountered, all to blame Apple for not letting users change Aqua.
-
-- Layout not persisting after exiting a full-screen video play in Firefox
-- Windows with minimum width (e.g., Apple Calendar, Spotify, Discord) not tiling nicely
-- Emacs not tiling (even with `(menu-bar-mode t)`)
-- Kitty not tiling (with the window decorations removed)
-- Being unable to delete a Mission Control desktop with Yabai running
-- High CPU usage of `WindowServer` process
-
-Use `cat /tmp/yabai_$USER.err.log` and `cat /tmp/skhd_$USER.err.log` to view the Yabai and Skhd log messages.
-
-Because of Yabai's limitations, I prefer using [Rectangle](https://github.com/rxhanson/Rectangle) and manually tiling windows when using a small laptop screen.
-After installing Rectangle, execute the following command to make Rectangle aware of Sketchybar:
-
-```bash
-defaults write com.knollsoft.Rectangle screenEdgeGapTop -int 30 # 0 to reset
-```
-
-My Vim-inspired Rectangle keybindings (restore them using ./macos/vimtangle.json):
-
-- `control + command` (`⌃⌘`) is the modifier
-- `mod + h/l`: Left/right half
-- `mod + j/k`: First thirds/last two thirds
-- `mod + n/m`: Almost maximize/maximize
-- `mod + -/=`: Smaller/larger
+- `alt + enter`: Open WezTerm
+- `alt + hjkl`: Focus window
+- `alt + shift + hjkl`: Move window in layout
+- `alt + f`: Toggle fullscreen
+- `alt + shift + space`: Toggle floating
+- `alt + e`: Balance window sizes
+- `ctrl + 1-5`: Switch workspace
+- `ctrl + alt + 1-5`: Move window to workspace
+- `ctrl + alt + s`: Restart Sketchybar
 
 ## macOS
 
@@ -213,31 +154,26 @@ Bolded items are in `Brewfile_core`, and other items are in `Brewfile_optional`,
 Formulae:
 
 - ffmpeg: `ffmpeg -i in.xxx out.yyy`
-- figlet: ASCII art generator
-- **fish**: De facto default shell
 - **fzf**: Command line fuzzy finder
 - **htop**: System monitor
 - hugo: Static website generator
 - imagemagick: Command line image manipulation
-- **lf**: My favorite CLI file manager
+- **jq**: JSON processor
+- **lazydocker**: Docker TUI
+- **lazygit**: Git TUI
 - **lua**
 - **neofetch**: Happy ricing!
 - **neovim**: Where I live
 - **node**
-- rclone: Cloud storage management
-- **rust**
-- **tmux**: Universal terminal multiplexer
+- **ripgrep**: Fast grep
 - tree: Tree-like directory view
 - **wget**: Be careful with what you download
 
-| Type            | Casks                                                                                                 |
-|-----------------|-------------------------------------------------------------------------------------------------------|
-| Development     | - Docker<br> - IntelliJ CE<br> - kitty<br> - MacTex (No GUI)<br> - **MacVim**<br> - **Wezterm**       |
-| Fun             | - Discord<br> - Minecraft<br> - Spotify                                                               |
-| Productivity    | - **Emacs**<br> - **Itsycal**<br> - Notion<br>                                                        |
-| System (macOS)  | - AppCleaner<br> - **Maccy**<br> - **Rectangle**<br> - **Stats**<br> - **Spaceman**                   |
-| Tools           | - **Bitwarden**<br> - Cryptomator<br> - GIMP<br> - OBS<br> - **Skim**<br> - VLC                       |
-| Web             | - **Firefox**<br> - Thunderbird                                                                       |
+| Type            | Casks                                          |
+|-----------------|------------------------------------------------|
+| Development     | - Docker<br> - **Wezterm**                     |
+| Productivity    | - **Itsycal**                                  |
+| System (macOS)  | - **AeroSpace**<br> - **Maccy**<br> - **Sketchybar** |
 
 ### Settings
 
