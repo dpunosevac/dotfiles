@@ -3,8 +3,7 @@
 > [!NOTE]
 > Inspired by awesome [Theo's Dotfiles](https://github.com/theopn/dotfiles)
 
-Here are dotfiles for my systems, M2 MacBook Pro and Intel MacBook Pro.
-MBPs run the latest version of macOS.
+Dotfiles for my MacBook Pros (Intel, M2, M4) running the latest macOS.
 
 Tools in this repository are mostly open-source utilities for development.
 
@@ -14,44 +13,49 @@ Tools in this repository are mostly open-source utilities for development.
 
 ## Installation
 
-- Configure cross-platform utilities using the following commands:
-    ```bash
-    git clone https://github.com/dpunosevac/dotfiles.git ~/dotfiles
-    ~/dotfiles/dotfiles-util.sh --install
-    ~/dotfiles/dotfiles-util.sh --delete-backup # Optional
-    ```
+**1. Clone**
+```bash
+git clone https://github.com/dpunosevac/dotfiles.git ~/dotfiles
+```
 
-- Configure macOS-specific utilities and settings using the following commands:
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew analytics off
+**2. Install Homebrew and all packages**
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew analytics off
+~/dotfiles/dotfiles-util.sh --macos-install
+```
 
-    ~/dotfiles/dotfiles-util.sh --macos-install
-    ```
+**3. Symlink configs**
+```bash
+~/dotfiles/dotfiles-util.sh --install
+~/dotfiles/dotfiles-util.sh --delete-backup # Optional
+```
 
-- Configure AeroSpace and Sketchybar for macOS tiling WM setup using the following commands:
-    ```bash
-    ~/dotfiles/dotfiles-util.sh --aerospace-install
-    ```
-    Don't forget to follow the further instructions in [the macOS tiling WM section](#macos-tiling-wm-setup)
+**4. Set up tiling WM**
+```bash
+~/dotfiles/dotfiles-util.sh --aerospace-install
+open -a AeroSpace
+brew services start sketchybar
+```
+See [macOS Tiling WM Setup](#macos-tiling-wm-setup) for required macOS settings.
 
-- Choose configurations in the `misc` directory and manually copy them! Follow the commands in `./misc/README.md`.
+**5. Install fonts**
+```bash
+brew install --cask font-caskaydia-cove-nerd-font font-fantasque-sans-mono-nerd-font
+```
 
-### Post-Installation
+**6. Create machine-specific config**
 
-- To install fonts via `fontconfig` and the included function in `dotfiles-util.sh`:
-    1. Navigate to [NERD Fonts download](https://www.nerdfonts.com/font-downloads) website
-    2. Right-click on the font download and copy the link
-    3. Execute the following
-        ```bash
-        $FONT_URL=thing-you-just-copied
-        ~/dotfiles/dotfiles-util.sh --install-font $FONT_URL
-        ```
+Create `~/.zshrc.local` for anything machine-specific — tokens, cloud SDKs, language runtimes. Sourced automatically, never committed.
 
-- To install CaskaydiaCove and Fantasque Sans Mono Nerd Fonts using Homebrew:
-    ```bash
-    brew install --cask font-caskaydia-cove-nerd-font font-fantasque-sans-mono-nerd-font
-    ```
+```bash
+# Example ~/.zshrc.local
+export GH_ACCESS_TOKEN=$(gh auth token 2>/dev/null)
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+```
+
 
 ## Shells
 
@@ -64,8 +68,7 @@ Tools in this repository are mostly open-source utilities for development.
         ```
         [vi-mode]` ➜ /current/path/ git-branch(* for unstaged, + for staged changes) | last-exit-code ❱
         ```
-    - Basic aliases: `cdf` to navigate directories quickly using `fzf`,
-        `cl` to `clear`, `l` to `ls` with list view and other options, `histgrep` to look up previous commands
+    - Aliases: `cl` clear, `l` ls list view, `histgrep` search history, `gs/gp/gpl/gc` git shortcuts, `lzd` lazydocker, `lzg` lazygit
     - I only install [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) by default
 
 ## Terminal Emulator
@@ -74,9 +77,7 @@ Tools in this repository are mostly open-source utilities for development.
 
 > Over-engineered terminal emulator, nailed the fundamental features, and it is configured in Lua!
 
-Wezterm is my primary terminal emulator/multiplexer!
-Watch my YouTube video [Configure Wezterm terminal emulator in Lua with me [ASMR Coding]](https://youtu.be/I3ipo8NxsjY) :)
-
+WezTerm is my primary terminal emulator.
 - Usage:
     - `LDR` = `C-a`
     - `LDR c`: Copy mode
@@ -104,14 +105,6 @@ Watch my YouTube video [Configure Wezterm terminal emulator in Lua with me [ASMR
 
 No comments.
 
-## Miscellaneous Configurations
-
-> [!NOTE]
-> These are single-file, minimal configurations that do not change very often.
-> These are meant to be manually deployed as needed.
-> Use the commands in `./misc/README.md` to deploy these configurations.
-
-- `bashrc`: Minimal config with a simple prompt, some aliases, and PATH variables. Zsh handles interactive use; Bash for scripts.
 
 ## macOS Tiling WM Setup
 

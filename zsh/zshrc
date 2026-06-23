@@ -6,46 +6,38 @@
 # /___/____/_/ /_/_/   \___/
 ##############################
 
-# Vim mode
 bindkey -v
-
-# Env Var
-export EDITOR=nvim
-export XDG_CONFIG_HOME="$HOME/.config"
+bindkey "^R" history-incremental-search-backward
 
 export DOT_DIR=~/dotfiles
 
-# Sourcing
+# PATH
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Env
+export EDITOR=nvim
+export XDG_CONFIG_HOME="$HOME/.config"
+export CONFIG_DIR="$HOME/.config"
+export TZ="Europe/Belgrade"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+
 if [[ -t 0 ]]; then
-  source $DOT_DIR/misc/bashrc
   source $DOT_DIR/zsh/aliases.zsh
   source $DOT_DIR/zsh/prompt.zsh
-  
+
   source ~/.zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-  source ~/.zsh_plugins/zsh-kubectl-promp/zsh-kubectl-prompt.plugin.zsh
+
+  [[ -f ~/.zsh_plugins/zsh-kubectl-prompt/zsh-kubectl-prompt.plugin.zsh ]] && \
+    source ~/.zsh_plugins/zsh-kubectl-prompt/zsh-kubectl-prompt.plugin.zsh
 
   neofetch
 fi
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export NVM_DIR="$HOME/.config"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dusan.punosevac/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dusan.punosevac/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/dusan.punosevac/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dusan.punosevac/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh) # add autocomplete permanently to your zsh shell
-
-bindkey "^R" history-incremental-search-backward
-export PATH="$HOME/.local/bin:$PATH"
-
-# bun completions
-[ -s "/Users/dpunosevac/.bun/_bun" ] && source "/Users/dpunosevac/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+# Machine-specific config (not committed to repo)
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
