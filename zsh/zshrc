@@ -39,5 +39,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# ImageMagick
+export MAGICK_HOME="/opt/homebrew/opt/imagemagick"
+export PATH="$MAGICK_HOME/bin:$PATH"
+
 # Machine-specific config (not committed to repo)
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
