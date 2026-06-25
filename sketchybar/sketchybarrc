@@ -120,7 +120,7 @@ sketchybar --add item seperator.l1 left                   						    \
 
 # AeroSpace workspace items
 SPACE_ICONS=("1" "2" "3" "4" "5")
-SPACE_LABELS=("$ICON_PRODUCTIVITY" "$ICON_WEB" "$ICON_DEV" "$ICON_CHAT" "$ICON_SPACE")
+SPACE_LABELS=("$ICON_PRODUCTIVITY" "$ICON_DEV" "$ICON_WEB" "$ICON_CHAT" "$ICON_SPACE")
 
 sketchybar --add event aerospace_workspace_change
 
