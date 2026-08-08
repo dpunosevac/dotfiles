@@ -1,0 +1,28 @@
+[general]
+import = ["~/.config/alacritty/themes/tokyo_night.toml"]
+live_config_reload = true
+
+[window]
+opacity = 0.9
+decorations = "Buttonless"
+dynamic_padding = true
+# Without this, Option sends the macOS composed character instead of Meta,
+# breaking Alt-b / Alt-f word motions in the shell and in readline.
+option_as_alt = "Both"
+
+[window.padding]
+x = 6
+y = 6
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+# Every window attaches the shared "main" session, which is the same session
+# reached remotely over Tailscale + Moshi from the phone and iPad.
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-lc", "tmux new-session -A -s main"]

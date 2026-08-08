@@ -74,29 +74,43 @@ export PATH="$GOPATH/bin:$PATH"
 
 ## Terminal Emulator
 
-### Wezterm
+### Alacritty + tmux
 
-> Over-engineered terminal emulator, nailed the fundamental features, and it is configured in Lua!
+> Alacritty draws text and nothing else. tmux owns panes, windows, sessions and
+> the status bar.
 
-WezTerm is my primary terminal emulator.
-- Usage:
-    - `LDR` = `C-a`
-    - `LDR c`: Copy mode
+Alacritty launches straight into `tmux new-session -A -s main`, so every window
+attaches the same session. That session is also what the phone and iPad attach to
+over Tailscale, which is the reason the multiplexer lives in tmux rather than in
+the terminal emulator.
+
+- Usage (`LDR` = `C-a`, the tmux prefix):
+    - `LDR c`: Copy mode (`v` select, `y` copy, `C-v` rectangle)
+    - `LDR p`: Paste buffer
     - `LDR s/v`: Create a split pane
     - `LDR hjkl`: Navigate pane
     - `LDR q`: Close pane
     - `LDR z`: Zoom pane
     - `LDR o`: Rotate pane
-    - `LDR r`: `resize_pane` mode. Use `hjkl` to resize pane and `ESC` or `Enter` to confirm
-    - `LDR t`: New tab
-    - `LDR [/]` Navigate tab
-    - `LDR 1-9`: Navigate tab by index
-    - `LDR n`: Launch tab navigator
-    - `LDR e`: Rename tab title
-    - `LDR m`: `move_tab` mode. Use `hj`/`kl` to move tabs and `ESC` or `Enter` to confirm
-        - `LDR {/}`: Move tab without entering the `move_tab` mode
-    - `LDR w`: Workspace launcher
-    - `$ wezterm show-keys --lua` to get the Lua table of all keybindings available
+    - `LDR r`: `resize` mode. Use `hjkl` to resize pane and `ESC` or `Enter` to confirm
+    - `LDR t`: New window
+    - `LDR [/]`: Navigate window
+    - `LDR 1-9`: Navigate window by index
+    - `LDR n`: Launch window navigator
+    - `LDR e`: Rename window
+    - `LDR m`: `movetab` mode. Use `hj`/`kl` to move windows and `ESC` or `Enter` to confirm
+        - `LDR {/}`: Move window without entering the `movetab` mode
+    - `LDR w`: Session tree
+    - `LDR R`: Reload `~/.tmux.conf`
+    - `$ tmux list-keys -T prefix` to dump every binding
+
+Copy uses OSC 52, so `y` in copy mode reaches the macOS clipboard identically over
+a local window or an SSH/Mosh session from a phone.
+
+Alacritty is ad-hoc signed, so macOS quarantines it on install. Clear it once with
+`xattr -d com.apple.quarantine /Applications/Alacritty.app`. Its Homebrew cask is
+deprecated and gets disabled on 2026-09-01; after that the `cask "alacritty"` line
+in `Brewfile_core` needs removing and updates become manual.
 
 ## Other Tools
 
@@ -126,7 +140,7 @@ Setup:
 
 Keybindings (`alt` = `⌥`):
 
-- `alt + enter`: Open WezTerm
+- `alt + enter`: Open Alacritty
 - `alt + hjkl`: Focus window
 - `alt + shift + hjkl`: Move window in layout
 - `alt + f`: Toggle fullscreen
@@ -162,7 +176,7 @@ Formulae:
 
 | Type            | Casks                                          |
 |-----------------|------------------------------------------------|
-| Development     | - Docker<br> - **Wezterm**                     |
+| Development     | - Docker<br> - **Alacritty**                    |
 | Productivity    | - **Itsycal**                                  |
 | System (macOS)  | - **AeroSpace**<br> - **Borders**<br> - **Maccy**<br> - **Sketchybar** |
 

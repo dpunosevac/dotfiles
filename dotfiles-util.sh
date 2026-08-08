@@ -81,13 +81,23 @@ function install() {
     done
   fi
 
-  if selection_prompt 'Wezterm'; then
-    mkdir -p ~/.config/wezterm/
-    backup_then_symlink ${DOT_DIR}/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
+  if selection_prompt 'Alacritty'; then
+    mkdir -p ~/.config/alacritty/
+    backup_then_symlink ${DOT_DIR}/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+    backup_then_symlink ${DOT_DIR}/alacritty/themes ~/.config/alacritty/themes
+  fi
+
+  if selection_prompt 'Tmux'; then
+    backup_then_symlink ${DOT_DIR}/tmux/tmux.conf ~/.tmux.conf
   fi
 
   if selection_prompt 'Zsh'; then
     backup_then_symlink ${DOT_DIR}/zsh/zshrc ~/.zshrc
+  fi
+
+  if selection_prompt 'Neofetch'; then
+    mkdir -p ~/.config/neofetch
+    backup_then_symlink ${DOT_DIR}/misc/neofetch.conf ~/.config/neofetch/config.conf
   fi
 
   yellow_echo 'Ending the dotfiles installation...'

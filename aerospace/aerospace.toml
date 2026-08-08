@@ -14,7 +14,7 @@ outer.bottom     = 10
 
 [mode.main.binding]
 # Applications
-alt-enter = 'exec-and-forget open -a WezTerm'
+alt-enter = 'exec-and-forget open -a Alacritty'
 
 # Focus window (same as yabai via skhd)
 alt-h = 'focus left'

@@ -47,3 +47,20 @@ uuid() {
 	echo $uuids | pbcopy
 }
 
+# Activate .venv: check cwd itself first, else search subdirs (depth 3)
+activate() {
+  if [[ -f "$PWD/.venv/bin/activate" ]]; then
+    source "$PWD/.venv/bin/activate"
+    return
+  fi
+
+  local matches=("$PWD"/**/.venv/bin/activate(N,om))
+  if [[ ${#matches[@]} -eq 0 ]]; then
+    echo "no .venv found"
+  elif [[ ${#matches[@]} -eq 1 ]]; then
+    source "${matches[1]}"
+  else
+    echo "multiple .venv found, pick one:"
+    printf '%s\n' "${matches[@]}"
+  fi
+}

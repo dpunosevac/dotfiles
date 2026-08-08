@@ -1,10 +1,8 @@
 # Miscellaneous Configurations
 
-These are single-file, simple configurations that do not change very often.
-These are meant to be manually deployed as needed.
-Use the following commands to create symlink for these files
+Single-file configs deployed via `~/dotfiles/dotfiles-util.sh --install` (Neofetch prompt).
 
+Manual fallback:
 ```bash
 mkdir -p ~/.config/neofetch && ln -sf ~/dotfiles/misc/neofetch.conf ~/.config/neofetch/config.conf
 ```
-
